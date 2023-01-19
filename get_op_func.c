@@ -35,7 +35,7 @@ void (*get_op_func(void))(stack_t **, unsigned int)
 
 	while (ops[i].opcode)
 	{
-		if (strcmp(op.opcode, ops[i].opcode == 0)
+		if (strcmp(op.opcode, ops[i].opcode) == 0)
 				return (ops[i].f);
 
 		i++;
