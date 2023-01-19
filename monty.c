@@ -9,7 +9,7 @@
 void monty(void)
 {
 	char line[MAX_LEN];
-	site_t line_len = MAX_LEN - 1;
+	size_t line_len = MAX_LEN - 1;
 	unsigned int line_number = 0;
 
 	/* read line from input */

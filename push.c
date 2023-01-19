@@ -15,7 +15,7 @@ void op_push(stack_t **stack, unsigned int line_number)
 
 	if (is_valid_int(op.arg) == 0)
 	{
-		fprint(stderr, "L%u: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		free_op();
 		exit(EXIT_FAILURE);
 	}
