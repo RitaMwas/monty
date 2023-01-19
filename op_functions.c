@@ -11,7 +11,7 @@ void op_pchar(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%u: Can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		free_op();
 		exit(EXIT_FAILURE);
 	}
