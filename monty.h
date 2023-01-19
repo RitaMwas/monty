@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+#define MAX_LEN 1024
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,18 +41,46 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*Define global variable */
-extern char *push_data;
+/**
+ * struct op_s - opcode, argument and stack
+ * @input: stream represent input instruction
+ * @opcode: the opcode
+ * @arg: argument
+ * @head: linked list representing stack
+ */
+typedef struct op_s
+{
+	FILE *input;
+	char *opcode;
+	char *arg;
+	stack_t *head;
+} op_t;
 
-char *push_data;
+extern op_t op;
 
-/* Function Prototypes */
-char **tokenize(char *s);
-void (*get_op_func(char *s))(stack_t **stack, unsigned int line_number);
-int stack_len(stack_t **stack);
-void free_stack(stack_t *stack);
+/* monty.c */
+void monty(void);
+void exec_op(char *line, unsigned int line_number);
+void get_op(char *line);
+
+/* get_op_func.c */
+void (*get_op_func(void))(stack_t **, unsigned int);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+
+/* op_functions.c */
+void op_pchar(stack_t **stack, unsigned int line_number);
+void op_pstr(stack_t **stack, unsigned int line_number);
+
+/* free_functions.c */
+void free_list(stack_t *head);
+void free_op(void);
+
+/* strings.c */
+char *_strcpy(char *dest, const char *src);
+char *_strdup(const char *str);
+char *_strtok(char *str, const char *delim);
+int is_valid_int(char *str);
 
 #endif
